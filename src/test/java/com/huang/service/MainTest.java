@@ -23,6 +23,7 @@ public class MainTest {
         calculator.convertString("{7,8}");
         calculator.convertString("{7,8,9}");
         PhoneButton.getLetter("0");
+        Main.main(new String[]{});
 
         calculator.convertString("Input: arr[] = {1,2,3,4}");
 
