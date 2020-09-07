@@ -11,7 +11,7 @@ import java.io.*;
  *      Input: arr[] = {2, 3}
  *      {2, 3}
  *      2,3,4
- * 不区分空格
+ * 不区分空格和大小写
  */
 public class Main {
     public static void main(String[] args) throws IOException {

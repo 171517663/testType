@@ -1,34 +1,33 @@
 package com.huang.service;
 
-import com.huang.util.PhoneButton;
-
-import java.io.IOException;
-
 public class Calculator {
 
+    // 限定输入数字长度在[0-99]
     private static final String REGEX = "^[0-9]{1,2}$";
+
+    // 匹配数字[0-9]
     private static final String REGEX_NUM = "^[0-9]{1,1}$";
 
-    public String convertString(String in) throws IOException {
+    public String convertString(String in) throws IllegalArgumentException {
 
         // 处理字符串
         if (in == null || in.length() == 0) {return "";}
-        String number = getNumber(in);
+        String numbers = getNumber(in);
         // 字符串校验
-        if (number == null || number.length() == 0) {return "";}
-        if(!number.matches(REGEX)) {
+        if (numbers.length() == 0) {return "";}
+        if(!numbers.matches(REGEX)) {
             return "only support converting the digits from 0 to 99 into letters";
         }
-        if (number.contains(PhoneButton.ZERO) || number.contains(PhoneButton.ONE)) {
+        if (numbers.contains(PhoneButton.ZERO) || numbers.contains(PhoneButton.ONE)) {
             return "0 and 1 do not map to any letters";
         }
 
         StringBuilder builder = new StringBuilder("Output:");
-        calculate(number, builder, new StringBuilder());
+        calculate(numbers, builder, new StringBuilder());
         return builder.toString();
     }
 
-    private String getNumber(String in) throws IOException {
+    private String getNumber(String in) throws IllegalArgumentException {
         String numList = in.replaceAll(" ", "");
         if (numList.toLowerCase().startsWith("input:arr[]={") && numList.endsWith("}")) {
             numList = numList.substring(13, numList.length()-1);
@@ -43,7 +42,7 @@ public class Calculator {
             if (num.matches(REGEX_NUM)) {
                 builder.append(num);
             } else {
-                throw new IOException("wrong number, please enter in this format: Input: arr[] = {2, 3}");
+                throw new IllegalArgumentException("wrong number, please enter in this format: Input: arr[] = {2, 3}");
             }
         }
         return builder.toString();

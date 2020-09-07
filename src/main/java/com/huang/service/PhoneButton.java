@@ -1,4 +1,4 @@
-package com.huang.util;
+package com.huang.service;
 
 public class PhoneButton {
     public static final String ZERO = "0";
@@ -24,24 +24,25 @@ public class PhoneButton {
     public static final char[] NINE_LETTER = new char[]{'w', 'x', 'y', 'z'};
 
     public static char[] getLetter(String number) {
-        if (number.equals(PhoneButton.TWO)) {
-            return PhoneButton.TWO_LETTER;
-        } else if(number.equals(PhoneButton.THREE)) {
-            return PhoneButton.THREE_LETTER;
-        } else if(number.equals(PhoneButton.FOUR)) {
-            return PhoneButton.FOUR_LETTER;
-        } else if(number.equals(PhoneButton.FIVE)) {
-            return PhoneButton.FIVE_LETTER;
-        } else if(number.equals(PhoneButton.SIX)) {
-            return PhoneButton.SIX_LETTER;
-        } else if(number.equals(PhoneButton.SEVEN)) {
-            return PhoneButton.SEVEN_LETTER;
-        } else if(number.equals(PhoneButton.EIGHT)) {
-            return PhoneButton.EIGHT_LETTER;
-        } else if(number.equals(PhoneButton.NINE)) {
-            return PhoneButton.NINE_LETTER;
-        } else {
-            return PhoneButton.ZERO_LETTER;
+        switch (number) {
+            case PhoneButton.TWO:
+                return PhoneButton.TWO_LETTER;
+            case PhoneButton.THREE:
+                return PhoneButton.THREE_LETTER;
+            case PhoneButton.FOUR:
+                return PhoneButton.FOUR_LETTER;
+            case PhoneButton.FIVE:
+                return PhoneButton.FIVE_LETTER;
+            case PhoneButton.SIX:
+                return PhoneButton.SIX_LETTER;
+            case PhoneButton.SEVEN:
+                return PhoneButton.SEVEN_LETTER;
+            case PhoneButton.EIGHT:
+                return PhoneButton.EIGHT_LETTER;
+            case PhoneButton.NINE:
+                return PhoneButton.NINE_LETTER;
+            default:
+                return PhoneButton.ZERO_LETTER;
         }
     }
 
